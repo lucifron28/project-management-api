@@ -153,3 +153,8 @@ def get_projects_by_team_member(team_member: str):
 def get_projects_by_start_date(start_date: str):
     filtered_projects = [project for project in projects if project.start_date == start_date]
     return filtered_projects
+
+@app.get("/projects/end_date/{end_date}", response_model=List[Project])
+def get_projects_by_end_date(end_date: str):
+    filtered_projects = [project for project in projects if project.end_date == end_date]
+    return filtered_projects
