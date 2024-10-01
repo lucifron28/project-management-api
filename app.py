@@ -122,3 +122,7 @@ projects = [
 def get_projects():
     return projects
 
+@app.post("/projects", response_model=Project)
+def create_project(project: Project):
+    projects.append(project)
+    return project
