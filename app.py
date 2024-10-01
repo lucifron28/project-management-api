@@ -158,3 +158,11 @@ def get_projects_by_start_date(start_date: str):
 def get_projects_by_end_date(end_date: str):
     filtered_projects = [project for project in projects if project.end_date == end_date]
     return filtered_projects
+
+@app.put("/projects/{project_id}", response_model=Project)
+def update_project(project_id: int, updated_project: Project):
+    for index, project in enumerate(projects):
+        if project.id == project_id:
+            projects[index] = updated_project
+            return updated_project
+    raise HTTPException(status_code=404, detail="Project not found")
