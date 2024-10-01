@@ -138,3 +138,8 @@ def get_project(project_id: int):
 def get_projects_by_name(name: str):
     filtered_projects = [project for project in projects if name.lower() in project.name.lower()]
     return filtered_projects
+
+@app.get("/projects/status/{status}", response_model=List[Project])
+def get_projects_by_status(status: bool):
+    filtered_projects = [project for project in projects if project.status == status]
+    return filtered_projects
