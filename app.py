@@ -166,3 +166,22 @@ def update_project(project_id: int, updated_project: Project):
             projects[index] = updated_project
             return updated_project
     raise HTTPException(status_code=404, detail="Project not found")
+
+@app.patch("/projects/{project_id}", response_model=Project)
+def partially_update_project(project_id: int, project_updates: Project):
+    for project in projects:
+        if project.id == project_id:
+            if project_updates.name is not None:
+                project.name = project_updates.name
+            if project_updates.description is not None:
+                project.description = project_updates.description
+            if project_updates.status is not None:
+                project.status = project_updates.status
+            if project_updates.start_date is not None:
+                project.start_date = project_updates.start_date
+            if project_updates.end_date is not None:
+                project.end_date = project_updates.end_date
+            if project_updates.team_members is not None:
+                project.team_members = project_updates.team_members
+            return project
+    raise HTTPException(status_code=404, detail="Project not found")
