@@ -33,6 +33,36 @@ This is a simple Project Management API built with FastAPI. It allows you to man
 - **Method:** `GET`
 - **Response:** The project with the specified ID
 
+### Retrieve Projects by Name
+
+- **URL:** `/projects/name/{name}`
+- **Method:** `GET`
+- **Response:** List of projects that match the specified name
+
+### Retrieve Projects by Status
+
+- **URL:** `/projects/status/{status}`
+- **Method:** `GET`
+- **Response:** List of projects that match the specified status
+
+### Retrieve Projects by Team Member
+
+- **URL:** `/projects/team/{team_member}`
+- **Method:** `GET`
+- **Response:** List of projects that include the specified team member
+
+### Retrieve Projects by Start Date
+
+- **URL:** `/projects/start_date/{start_date}`
+- **Method:** `GET`
+- **Response:** List of projects that match the specified start date
+
+### Retrieve Projects by End Date
+
+- **URL:** `/projects/end_date/{end_date}`
+- **Method:** `GET`
+- **Response:** List of projects that match the specified end date
+
 ### Update a Specific Project by ID
 
 - **URL:** `/projects/{project_id}`
@@ -52,3 +82,7 @@ This is a simple Project Management API built with FastAPI. It allows you to man
 - **URL:** `/projects/{project_id}`
 - **Method:** `DELETE`
 - **Response:** The deleted project
+
+## License
+
+This project is licensed under the MIT License.
