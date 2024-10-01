@@ -126,3 +126,10 @@ def get_projects():
 def create_project(project: Project):
     projects.append(project)
     return project
+
+@app.get("/projects/{project_id}", response_model=Project)
+def get_project(project_id: int):
+    for project in projects:
+        if project.id == project_id:
+            return project
+    raise HTTPException(status_code=404, detail="Project not found")
