@@ -133,3 +133,8 @@ def get_project(project_id: int):
         if project.id == project_id:
             return project
     raise HTTPException(status_code=404, detail="Project not found")
+
+@app.get("/projects/name/{name}", response_model=List[Project])
+def get_projects_by_name(name: str):
+    filtered_projects = [project for project in projects if name.lower() in project.name.lower()]
+    return filtered_projects
