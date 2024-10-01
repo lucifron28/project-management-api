@@ -143,3 +143,8 @@ def get_projects_by_name(name: str):
 def get_projects_by_status(status: bool):
     filtered_projects = [project for project in projects if project.status == status]
     return filtered_projects
+
+@app.get("/projects/team/{team_member}", response_model=List[Project])
+def get_projects_by_team_member(team_member: str):
+    filtered_projects = [project for project in projects if team_member in project.team_members]
+    return filtered_projects
