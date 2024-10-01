@@ -185,3 +185,11 @@ def partially_update_project(project_id: int, project_updates: Project):
                 project.team_members = project_updates.team_members
             return project
     raise HTTPException(status_code=404, detail="Project not found")
+
+@app.delete("/projects/{project_id}", response_model=Project)
+def delete_project(project_id: int):
+    for index, project in enumerate(projects):
+        if project.id == project_id:
+            deleted_project = projects.pop(index)
+            return deleted_project
+    raise HTTPException(status_code=404, detail="Project not found")
